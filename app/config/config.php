@@ -13,7 +13,7 @@ define ("WEB_TITLE", "General Remodeling");
 define ("PATH", "eom-demo"); # App container folder
 
 # PATH to media files and site root constants
-define ("SITE_ROOT", "/demos/" . PATH);
+define ("SITE_ROOT", "/demo/" . PATH);
 define ("MEDIA", SITE_ROOT . "/" . "public");
 define ("HTML", "public" . DS . "html");
 define ("THEME", "default-theme");
