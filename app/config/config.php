@@ -24,7 +24,7 @@ define ("DEFAULT_CONTROLLER", "start");
 define ("DEFAULT_METHOD", "index");
 define ("NOT_FOUND", "not_found");
 
-# Email address to send welcome email
+# Email address to send quote email
 define ("SENDER_EMAIL", "no-reply@accedo-gps.000webhostapp.com");
 
 # Startup Locales
