@@ -56,6 +56,11 @@ img.img-responsive,
   padding-bottom: 30px;
 }
 
+.sec-sm-padding {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 /* Typography */
 
 p {
@@ -110,6 +115,15 @@ h3 {
 
 .required {
   color: red;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.bg-black p {
+  color: #999;
+  margin: 0;
 }
 
 /* Header */
@@ -188,6 +202,7 @@ h3 {
 
 .carousel-caption {
   background-color: rgba(69, 69, 69, 0.8);
+  padding: 15px;
 }
 
 .carousel-control {
@@ -288,6 +303,14 @@ footer h4 {
   color: #999;
 }
 
+footer .bg-secondary a {
+  color: #fff;
+}
+
+footer .bottom-nav .nav-link:hover {
+  text-decoration: underline;
+}
+
 /* Mobile only */
 
 @media (max-width: 767px) {
@@ -329,7 +352,6 @@ footer h4 {
   .carousel-caption {
     max-width: 50%;
     margin: 0 auto;
-    padding: 15px;
     text-align: left;
   }
   
