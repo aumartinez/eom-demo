@@ -128,6 +128,7 @@ $(document).ready(function(){
   }
   
   function removeErrors() {
+    $("#error.active").removeClass("active");
     $(".error.active").removeClass("active");
   }
   
