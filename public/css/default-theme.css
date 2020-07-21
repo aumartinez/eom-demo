@@ -106,6 +106,9 @@ h3 {
   font-weight: bold;
 }
 
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:focus,
+.btn-primary:active,
 .btn-primary:hover {
   background-color: #f7c51e;
   border: none;
@@ -124,6 +127,14 @@ h3 {
 .bg-black p {
   color: #999;
   margin: 0;
+}
+
+.error {
+  display: none;
+}
+
+.error.active {
+  display: block;
 }
 
 /* Header */
@@ -297,6 +308,20 @@ h3 {
   margin-top: 65px;
 }
 
+.loader i {
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+.loader {
+  display: none;
+}
+
+.loader.active {
+  display: inline-block;
+}
+
 /* Footer */
 
 footer h4 {
@@ -322,7 +347,7 @@ footer .bottom-nav .nav-link:hover {
   
   header + nav.navbar {
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 0;    
   }
 }
 
@@ -347,6 +372,10 @@ footer .bottom-nav .nav-link:hover {
     align-self: flex-end;
   }
   
+  header + nav.navbar {
+    border-bottom: 1px solid #999;
+  }
+  
   /* Carousel */
   
   .carousel-caption {
@@ -363,5 +392,26 @@ footer .bottom-nav .nav-link:hover {
 @media (min-width: 1200px) {
   .header-item .icon {
     font-size: 40px;
+  }
+}
+
+/* Animation */
+
+@-moz-keyframes spin { 
+ 100% { 
+   -moz-transform: rotate(360deg); 
+ } 
+}
+
+@-webkit-keyframes spin { 
+  100% { 
+   -webkit-transform: rotate(360deg); 
+  } 
+}
+
+@keyframes spin { 
+  100% { 
+    -webkit-transform: rotate(360deg); 
+    transform:rotate(360deg); 
   }
 }

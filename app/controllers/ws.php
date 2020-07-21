@@ -1,6 +1,6 @@
 <?php
 
-class Start extends Controller {
+class WS extends Controller {
   
   protected $output;
     
@@ -16,24 +16,19 @@ class Start extends Controller {
     
     # Instantiate custom view output
     $this->output = new PageView();
-    
-    $path = $_SERVER["DOCUMENT_ROOT"] . DS . SITE_ROOT . DS . "public" . DS;
-    
-    $css = $path . "css" . DS ."default-theme.css";    
-    $css_version = filemtime($css);
-    $this->output->add_locale("CSS_VERSION", $css_version);
-    
-    $js = $path . "js" . DS ."main.js";    
-    $js_version = filemtime($js);
-    $this->output->add_locale("JS_VERSION", $js_version);
   }
   
   # Each method will request the model to present the local resource
   
   # Landing page method
   public function index() {
-    $this->get_model("PageModel")->page_title="Index";
-    $this->build_page("start");
+    # 404 page
+    $this->get_model("PageModel")->page_title="404 Error";
+    $this->build_page("not-found");
+  }
+  
+  public function services() {
+    
   }
       
   # Not found handler
