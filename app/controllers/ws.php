@@ -15,6 +15,8 @@ class WS extends Controller {
     $this->load_model("PageModel");
     $this->load_model("WSModel");
     
+    # Instantiate custom view output
+    $this->output = new PageView();    
   }
   
   # Each method will request the model to present the local resource
