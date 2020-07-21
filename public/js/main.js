@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
   $("#services").change(function(){
-    let url = "/demos/eom-demo/ws/get-value";
+    let url = "/demo/eom-demo/ws/get-value";
     let services = $("#services").val().trim();
         
     $.ajax({
@@ -17,12 +17,18 @@ $(document).ready(function(){
     .done(function(data, textStatus, jqXHR){
       $(".ajax-loader").removeClass("active");
       
-      let val = Number(data[0].service_value).toFixed(2);
-      $("#service-value").val(val);
-      
-      let area = $("#area").val();
-      let value = $("#service-value").val();
-      let mult = (area * value).toFixed(2);
+      if(data[0].service_value) {
+        let val = Number(data[0].service_value).toFixed(2);
+        $("#service-value").val(val);
+        
+        let area = $("#area").val();
+        let value = $("#service-value").val();
+        let mult = (area * value).toFixed(2);  
+      }
+      else {
+        $("#service-value").val("");
+        let mult = "";
+      }    
       
       $("#cost").val(mult);
     })
@@ -94,6 +100,7 @@ $(document).ready(function(){
         phoneNumb = phoneNumb.replace(/[^0-9]/g, "");
         
         if (phoneNumb.length != 10) {
+          $("#phone").next().text("Phone number should be 10 digits");
           err.push("#phone");
         }
       }
@@ -134,7 +141,7 @@ $(document).ready(function(){
       "message": $("#message").val().trim(),
     };
     
-    let url = "/demos/eom-demo/quote/ajax";
+    let url = "/demo/eom-demo/quote/ajax";
     
     $.ajax({
       data: data,
@@ -142,6 +149,7 @@ $(document).ready(function(){
       dataType: "json",
       url: url,
       beforeSend: function(){
+        $("#error").removeClass("active");
         $(".loader").addClass("active");
       },
     })
