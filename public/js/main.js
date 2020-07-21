@@ -54,6 +54,7 @@ $(document).ready(function(){
     
     if (errors.length == 0) {
       e.preventDefault();
+      removeErrors();
       ajaxSubmit();
     }
     else {
@@ -149,8 +150,7 @@ $(document).ready(function(){
       type: "POST",
       dataType: "json",
       url: url,
-      beforeSend: function(){
-        $("#error").removeClass("active");
+      beforeSend: function(){        
         $(".loader").addClass("active");
       },
     })
