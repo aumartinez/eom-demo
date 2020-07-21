@@ -11,7 +11,6 @@ class Start extends Controller {
             
     # Any models required to interact with this controller should be loaded here    
     $this->load_model("StartModel");
-    $this->load_model("FormsModel");
     $this->load_model("PageModel");
     
     # Instantiate custom view output
