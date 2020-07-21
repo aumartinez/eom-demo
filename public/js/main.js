@@ -16,19 +16,20 @@ $(document).ready(function(){
     })
     .done(function(data, textStatus, jqXHR){
       $(".ajax-loader").removeClass("active");
+      let mult = "";
       
-      if(data[0].service_value) {
+      try{
         let val = Number(data[0].service_value).toFixed(2);
         $("#service-value").val(val);
         
         let area = $("#area").val();
         let value = $("#service-value").val();
-        let mult = (area * value).toFixed(2);  
+        mult = (area * value).toFixed(2);  
       }
-      else {
+      catch(e){
         $("#service-value").val("");
-        let mult = "";
-      }    
+        mult = "";
+      }
       
       $("#cost").val(mult);
     })
