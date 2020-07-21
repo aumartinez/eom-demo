@@ -149,7 +149,7 @@ h3 {
 }
 
 .header-item .icon {
-  font-size: 40px;  
+  font-size: 30px;  
   display: block;
   color: #999;
   float: left;
@@ -399,7 +399,7 @@ footer .bottom-nav .nav-link:hover {
 
 @media (min-width: 1200px) {
   .header-item .icon {
-    font-size: 40px;
+    font-size: 30px;
   }
 }
 
