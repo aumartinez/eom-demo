@@ -21,6 +21,105 @@ img.img-responsive,
   width: 100%;
 }
 
+.alert {
+  display: none;
+}
+
+.alert.active {
+  display: block;
+}
+
+.col-flex-vt-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.res-pd-top-bottom {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Branding */
+
+.color-secondary {
+  
+}
+
+.bg-secondary {
+  background-color: #454545 !important;
+}
+
+/* Header */
+
+.header-item {
+  margin: 0;
+  border-right: 1px solid #999;
+}
+
+.header-item.last {
+  border: none;
+}
+
+.header-item .icon {
+  font-size: 40px;  
+  display: block;
+  color: #999;
+  float: left;
+  margin-right: 15px;
+}
+
+.header-item .info {
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.header-item a,
+.header-item .sub-info {
+  color: #999;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.header-item a:hover {
+  color: #fff;
+}
+
+.social-nav .nav-link {
+  color: #f7c51e;
+  font-size: 30px;
+}
+
+/* Navbar */
+
+.top-nav .row, 
+#navbar .navbar-nav {  
+  -webkit-box-pack: space-betweeen;
+  -ms-flex-pack: space-betweeen;
+  justify-content: space-between;
+  width: 100%;  
+}
+
+#navbar .nav-link {
+  color: #999;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#navbar .nav-link:hover {
+  color: #000;
+}
+
+
 /* Mobile only */
 
 @media (max-width: 767px) {
@@ -31,6 +130,8 @@ img.img-responsive,
 
 @media (min-width: 767px) {
   .visible-xs {
-    display: none;
+    display: none !important;
   }
+  
+  
 }
