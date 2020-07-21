@@ -212,7 +212,8 @@ h3 {
 /* Carousel */
 
 .carousel-caption {
-  background-color: rgba(69, 69, 69, 0.8);
+  background-color: #454545;
+  background-color: rgba(69, 69, 69, 0.9);
   padding: 15px;
 }
 
