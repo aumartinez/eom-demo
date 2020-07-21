@@ -96,12 +96,7 @@ class PageModel extends DbModel {
       $html .= file_get_contents(HTML . DS . "temp" . DS . "resources.html");
       $html .= "\n";
     }
-    
-    if (file_exists(HTML . DS . "resources" . DS . "cpanel.html")) {
-      $html .= file_get_contents(HTML . DS . "resources" . DS . "cpanel.html");
-      $html .= "\n";
-    }
-    
+        
     $html .= " </head>";
     $html .= "\n";
     
