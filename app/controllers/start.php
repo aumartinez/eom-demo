@@ -44,7 +44,6 @@ class Start extends Controller {
     "ERROR" => "",
     "SUCCESS" => "",
     "CSRF" => $_SESSION["token"],
-    "ACTIVE" => "",
     );
     
     $this->output->add_localearray($locales);
