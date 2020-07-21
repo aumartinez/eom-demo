@@ -17,6 +17,10 @@ img.img-responsive,
   display: none;
 }
 
+.btn-long {
+  width: 100%;
+}
+
 /* Mobile only */
 
 @media (max-width: 767px) {
