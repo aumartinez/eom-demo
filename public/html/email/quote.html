@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+
+<table width="600" style="margin: 10px auto;font-family: Arial, sans-serif;line-height: 1.6;border-collapse: collapse;border-spacing: 0;">
+      <thead style="height: 310px; background-color: #454545;">
+        <tr style="padding: 0;margin: 0;">
+          <td colspan="2" style="padding: 0;margin: 0;">
+            <img src="{$SERVER$}{$MEDIA$}/img/logo.png" alt="Header" style="display: block; margin:0 auto;">
+          </td>
+        </tr>
+      </thead>
+      
+      <tbody style="border-right: 60px solid transparent;border-left: 60px solid transparent;">
+        <tr style="padding: 0;margin: 0;">
+          <td colspan="2" style="padding: 0;margin: 0;vertical-align: top;">
+            <h1 class="text-white email-title" style="font-size: 28px;text-align: center;margin: 45px 0 30px;">
+              Your free quote is ready!
+            </h1>
+            
+            <p class="text-center text-caption" style="text-align: left;font-size: 14px; color:#000000">
+              <strong>Client name:</strong> <br />
+              {$CLIENT_NAME$}
+              <br />
+              <br />
+              
+              <strong>Email address:</strong> <br />
+              {$EMAIL_ADDRESS$}
+              <br />
+              <br />
+              
+              <strong>Phone number:</strong> <br />
+              {$PHONE$}
+              <br />
+              <br />
+              
+              <strong>Quoted service:</strong> <br />
+              {$SERVICE$}
+              <br />
+              <br />
+              
+              <strong>Quote:</strong> <br />
+              <span>Area: {$AREA$}</span>, <span>Unit value: ${$UNIT_VALUE$}</span>, <span>Total: ${$TOTAL$}</span>
+              <br />
+              <br />
+              
+              <strong>Subject:</strong> <br />
+              {$SUBJECT$}
+              <br />
+              <br />
+              
+              <strong>Message:</strong> <br />
+              {$MESSAGE$}              
+            </p>
+          </td>
+        </tr> 
+      </tbody>
+      
+      <tfoot style="border-right: 60px solid transparent;border-left: 60px solid transparent;border-bottom: 30px solid transparent;background-color: #454545;">
+        <tr style="padding: 0;margin: 0;">
+          <td colspan="2" style="padding: 0;margin: 0;">
+            <p class="text-footer footer-disclaimer" style="color: #999999;text-decoration: none;margin: 0;margin-top: 30px;margin-bottom: 20px;">
+              You received this email because you just submitted a form. If these emails get annoying, please feel free to <a href="{$SERVER$}/unsubscribe" title="Unsubscribe" style="color: #ffffff;text-decoration: none;margin: 0;">unsubscribe</a>.
+            </p>
+          </td>
+        </tr>
+      </tfoot>
+      
+    </table>
+</body>
+</html>

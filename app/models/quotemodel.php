@@ -30,6 +30,60 @@ class QuoteModel extends DbModel {
     $this->error_check($route);
   }
   
+  public function required($route) {
+    $req = array(
+    "csrf",
+    "name",
+    "email",
+    "phone",
+    "area",
+    "subject",
+    "message",
+    );
+    
+    foreach ($req as $value) {
+      if (!isset($_POST[$value]) || trim($_POST[$value]) == "") {
+        $value = ucfirst($value);
+        $_SESSION["error"][] = $value . " is missing";
+      }
+    }
+    
+    $this->error_check($route);
+  }
+  
+  public function validate_form($route) {
+    # Email is valid
+    if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+      $_SESSION["error"][] = "Email is invalid";
+    }
+    
+    # Validate phone number
+    $phone = $this->sanitized["phone"];
+    
+    if (!is_valid_phone($phone)){
+      $_SESSION["error"][] = "Invalid phone number";
+    }
+    
+    # Validate service selection
+    $service = $this->sanitized["services"];
+    
+    if (!is_valid_service($service)){
+      $_SESSION["error"][] = "Invalid service selection";
+    }
+    
+    $this->error_check($route);
+  }
+  
+  public function get_value($str) {
+    $sql = "SELECT service_value
+            FROM eom_services
+            WHERE services = '{$str}'";
+            
+    $res = $this->get_query($sql);
+    
+    return $res[0];
+  }
+  
   public function sanitize_str($str) {
     $str = trim($str);
     $str = stripslashes($str);
@@ -40,7 +94,7 @@ class QuoteModel extends DbModel {
     
     return $str;
   }
-  
+    
   public function sanitize_post($route) {
     $this->sanitized = array();      
     

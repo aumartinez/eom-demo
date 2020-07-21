@@ -323,7 +323,7 @@
       </div>
       
       <div class="col-lg-6">
-        <h2>
+        <h2 id="quote-title">
           Get a free quote
         </h2>
         
@@ -398,15 +398,11 @@
                   This is a required field
                 </div>
               </div>
-              
-              <div class="form-group">
-                <input id="service-value" type="hidden" value="1" />
-              </div>
             </div>
           </div>
           
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group">
                 <label for="area">
                 Area: <span class="required">*</span>
@@ -418,10 +414,19 @@
               </div>
             </div>
             
-            <div class="col-md-6">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="service-value">
+                Unit value: <span class="ajax-loader"><i class="fas fa-sync-alt"></i></span>
+                </label>
+                <input id="service-value" name="service-value" type="number" step="0.01" min="1" class="form-control" />
+              </div>
+            </div>
+            
+            <div class="col-md-4">
               <div class="form-group">
                 <label for="cost">
-                Cost: <span class="ajax-loader"><i class="fas fa-sync-alt"></i></span>
+                Cost:
                 </label>
                 <input id="cost" name="cost" type="number" step="0.01" min="0" class="form-control" />
                 <div class="error required">

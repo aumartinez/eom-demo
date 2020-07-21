@@ -4,7 +4,7 @@ $(document).ready(function(){
   $("#services").change(function(){
     let url = "/demos/eom-demo/ws/get-value";
     let services = $("#services").val().trim();
-    
+        
     $.ajax({
       data:{"services": services},
       type: "POST",
@@ -128,13 +128,13 @@ $(document).ready(function(){
       "name": $("#name").val().trim(),
       "email": $("#email").val().trim(),
       "phone": $("#phone").val().trim(),
+      "services": $("#services").val().trim(),
       "area": $("#area").val().trim(),
-      "cost": $("#cost").val().trim(),
       "subject": $("#subject").val().trim(),
       "message": $("#message").val().trim(),
     };
     
-    let url = "/demos/eom-demo/quote/process";
+    let url = "/demos/eom-demo/quote/ajax";
     
     $.ajax({
       data: data,
@@ -143,7 +143,7 @@ $(document).ready(function(){
       url: url,
       beforeSend: function(){
         $(".loader").addClass("active");
-      }
+      },
     })
     .done(function(data, textStatus, jqXHR){
       $(".loader").removeClass("active");

@@ -325,6 +325,10 @@ h3 {
   display: inline-block;
 }
 
+input[type='number'] {
+  text-align: right;
+}
+
 /* Footer */
 
 footer h4 {
