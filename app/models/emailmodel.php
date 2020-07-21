@@ -23,7 +23,7 @@ class EmailModel extends DbModel {
     "MIME-Version: 1.0",
     "Content-Transfer-Encoding: quoted-printable",
     "Content-type:text/html;charset=UTF-8",
-    "From: Utility Junction <" . $from . ">",
+    "From: General Remodeling <" . $from . ">",
     "Reply-To: " . $from
     );
     

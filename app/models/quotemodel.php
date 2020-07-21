@@ -84,6 +84,16 @@ class QuoteModel extends DbModel {
     return $res[0];
   }
   
+  public function get_service($str) {
+    $sql = "SELECT service_value
+            FROM eom_services
+            WHERE services = '{$str}'";
+            
+    $res = $this->get_query($sql);
+    
+    return $res[0];
+  }
+  
   public function sanitize_str($str) {
     $str = trim($str);
     $str = stripslashes($str);

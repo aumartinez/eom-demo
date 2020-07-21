@@ -13,6 +13,9 @@ class Quote extends Controller {
     $this->load_model("QuoteModel");    
     $this->load_model("PageModel");
     $this->load_model("EmailModel");
+    
+    # Instantiate custom view output
+    $this->output = new PageView();
   }
   
   # Each method will request the model to present the local resource
@@ -44,7 +47,7 @@ class Quote extends Controller {
     "CLIENT_NAME" => $arr["name"],
     "EMAIL_ADDRESS" => $arr["email"],
     "PHONE" => $arr["phone"],
-    "SERVICE" => $arr["services"],
+    "SERVICE" => ucfirst($arr["services"]),
     "AREA" => $arr["area"],
     "UNIT_VALUE" => $unit["service_value"],
     "TOTAL" => $total,
@@ -52,8 +55,22 @@ class Quote extends Controller {
     "MESSAGE" => $arr["message"],
     );
     
-    $this->output->add_localearray($arr);
+    $this->output->add_localearray($locales);
     
+    $str = "";    
+    if (is_https()) {
+      $str .= "https://";
+    }
+    else {
+      $str .= "http://";
+    }
+    
+    $str .= $_SERVER["SERVER_NAME"];
+    $this->output->add_locale("SERVER", $str);
+    
+    # Send email to client
+    $subject = "Your free quote is ready";
+    $email = $arr["email"];
     $emailbody = $this->get_emailbody("quote");
     $this->get_model("EmailModel")->send_email($subject, $email, $emailbody, "quote");
     
@@ -68,13 +85,8 @@ class Quote extends Controller {
     $this->get_model("QuoteModel")->required($route);
     $this->get_model("QuoteModel")->sanitize_post($route);
     $this->get_model("QuoteModel")->validate_form($route);
-    
-    $_SESSION["success"][] = "Your quote has been emailed, check your inbox and SPAM folder";
-    
-    $mess = array(
-    "success" => "Your quote has been emailed, check your inbox and SPAM folder", 
-    );
-    
+    $arr = $this->get_model("QuoteModel")->sanitized;
+       
     $area = $arr["area"];
     $unit = $this->get_model("QuoteModel")->get_service($arr["services"]);
     $total = $area * $unit["service_value"];
@@ -83,7 +95,7 @@ class Quote extends Controller {
     "CLIENT_NAME" => $arr["name"],
     "EMAIL_ADDRESS" => $arr["email"],
     "PHONE" => $arr["phone"],
-    "SERVICE" => $arr["services"],
+    "SERVICE" => ucfirst($arr["services"]),
     "AREA" => $arr["area"],
     "UNIT_VALUE" => $unit["service_value"],
     "TOTAL" => $total,
@@ -91,11 +103,28 @@ class Quote extends Controller {
     "MESSAGE" => $arr["message"],
     );
     
-    $this->output->add_localearray($arr);
+    $this->output->add_localearray($locales);
     
+    $str = "";    
+    if (is_https()) {
+      $str .= "https://";
+    }
+    else {
+      $str .= "http://";
+    }
+    
+    $str .= $_SERVER["SERVER_NAME"];
+    $this->output->add_locale("SERVER", $str);
+    
+    # Send email to client
+    $subject = "Your free quote is ready";
+    $email = $arr["email"];
     $emailbody = $this->get_emailbody("quote");
     $this->get_model("EmailModel")->send_email($subject, $email, $emailbody, "quote");
     
+    $mess = array(
+    "success" => "Your quote has been emailed, check your inbox and SPAM folder", 
+    );
     echo json_encode($mess);
     exit();
   }
