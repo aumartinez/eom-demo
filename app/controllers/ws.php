@@ -12,6 +12,7 @@ class WS extends Controller {
     header('Content-Type: application/json');
     
     # Any models required to interact with this controller should be loaded here    
+    $this->load_model("PageModel");
     $this->load_model("WSModel");
     
   }
