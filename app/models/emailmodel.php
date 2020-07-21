@@ -15,7 +15,7 @@ class EmailModel extends DbModel {
     $this->email = $email;
             
     $to = $this->email;
-    $from = SIGNUP_EMAIL;
+    $from = SENDER_EMAIL;
     $this->subject = $subject;
     $txt = quoted_printable_encode($emailbody);
     
@@ -29,41 +29,6 @@ class EmailModel extends DbModel {
     
     $headers = implode("\r\n", $headers);
     $send = mail($to, $this->subject, $txt, $headers);
-    
-    if (!$send) {
-      # If mail fails, log failure
-      
-      $sql = "INSERT INTO uj_emailfail_log (
-      email,
-      email_type,
-      failed_at
-      )
-      VALUES (
-      '{$this->email}',
-      '{$temp}',
-      NOW()
-      )";
-      
-      $this->set_query($sql);
-    }
-    if ($send) {
-      # Log, successful submit
-      
-       $sql = "INSERT INTO uj_emailsuccess_log (
-       email,
-       email_type,
-       send_at
-       )
-      VALUES (
-      '{$this->email}',
-      '{$temp}',
-      NOW()
-      )";
-      
-      $this->set_query($sql);
-    }
-    
-    return true;
   }  
   
   public function get_emailtemp($temp = "default") {

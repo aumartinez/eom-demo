@@ -1,7 +1,7 @@
 <?php
 
 # Database link credentials
-define ("DBNAME", "eom_webapp");
+define ("DBNAME", "eom_demo");
 define ("DBUSER", "root");
 define ("DBPASS", "");
 define ("DBHOST", "localhost");

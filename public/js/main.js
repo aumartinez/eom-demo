@@ -1,12 +1,52 @@
 "use strict";
 
 $(document).ready(function(){
+  $("#services").change(function(){
+    let url = "/demos/eom-demo/ws/get-value";
+    let services = $("#services").val().trim();
+    
+    $.ajax({
+      data:{"services": services},
+      type: "POST",
+      dataType: "json",
+      url: url,
+      beforeSend: function(){
+        $(".ajax-loader").addClass("active");
+      }
+    })
+    .done(function(data, textStatus, jqXHR){
+      $(".ajax-loader").removeClass("active");
+      
+      let val = Number(data[0].service_value).toFixed(2);
+      $("#service-value").val(val);
+      
+      let area = $("#area").val();
+      let value = $("#service-value").val();
+      let mult = (area * value).toFixed(2);
+      
+      $("#cost").val(mult);
+    })
+    .fail(function(jqXHR, textStatus, errorThrown){
+      $("#error").addClass("active");
+      $("#error").text("Server error");
+    });
+    
+  });
+  
+  $("#area").change(function(){
+    let area = $("#area").val();
+    let value = $("#service-value").val();
+    let mult = (area * value).toFixed(2);
+    
+    $("#cost").val(mult);
+  });
   
   $("#quote-form").submit(function(e){
     $(".loader").addClass("active");
     let errors = validateForm();
     
     if (errors.length == 0) {
+      e.preventDefault();
       ajaxSubmit();
     }
     else {
@@ -57,7 +97,7 @@ $(document).ready(function(){
           err.push("#phone");
         }
       }
-      
+                  
       return err;
       
     }
@@ -80,9 +120,41 @@ $(document).ready(function(){
   
   function removeErrors() {
     $(".error.active").removeClass("active");
-  }  
-  
-  function ajaxSubmit(){
-    
   }
+  
+  function ajaxSubmit() {
+    let data = {
+      "csrf": $("#csrf").val().trim(),
+      "name": $("#name").val().trim(),
+      "email": $("#email").val().trim(),
+      "phone": $("#phone").val().trim(),
+      "area": $("#area").val().trim(),
+      "cost": $("#cost").val().trim(),
+      "subject": $("#subject").val().trim(),
+      "message": $("#message").val().trim(),
+    };
+    
+    let url = "/demos/eom-demo/quote/process";
+    
+    $.ajax({
+      data: data,
+      type: "POST",
+      dataType: "json",
+      url: url,
+      beforeSend: function(){
+        $(".loader").addClass("active");
+      }
+    })
+    .done(function(data, textStatus, jqXHR){
+      $(".loader").removeClass("active");
+      
+      $("#success").addClass("active");
+      $("#success").text(data.success);
+    })
+    .fail(function(jqXHR, textStatus, errorThrown){
+      $("#error").addClass("active");
+      $("#error").text("Server error");
+    });
+  }
+    
 });

@@ -1,6 +1,6 @@
 <?php
 
-class WS extends Controller {
+class Quote extends Controller {
   
   protected $output;
     
@@ -8,12 +8,9 @@ class WS extends Controller {
     parent::__construct($controller, $method);
         
     session_start();
-    
-    header('Content-Type: application/json');
-    
+            
     # Any models required to interact with this controller should be loaded here    
-    $this->load_model("WSModel");
-    
+    $this->load_model("QuoteModel");
   }
   
   # Each method will request the model to present the local resource
@@ -25,18 +22,13 @@ class WS extends Controller {
     $this->build_page("not-found");
   }
   
-  public function get_value() {
-    $val = $_POST["services"];
-    $val = $this->get_model("WSModel")->sanitize_str($val);
+  public function process() {
+    $_SESSION["error"] = array();
+    $route = "/demos/eom-demo/";
     
-    $result = $this->get_model("WSModel")->get_value($val);
+    $this->get_model("QuoteModel")->csrf_check($route);
     
-    echo json_encode($result);
-  }
-  
-  public function get_values() {
-    $values = $this->get_model("WSModel")->get_values();
-    echo json_encode($values);
+    echo "passed";
   }
       
   # Not found handler

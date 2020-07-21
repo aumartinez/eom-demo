@@ -327,12 +327,16 @@
           Get a free quote
         </h2>
         
-        <form id="quote-form" action="/" method="post">
-          <div id="error" class="alert alert-danger">
+        <form id="quote-form" action="{$SITE_ROOT$}/quote/process" method="post">
+          <div id="error" class="alert alert-danger {$ERROR_ACTIVE$}">
             {$ERROR$}
           </div>
-          <div id="success" class="alert alert-success">
+          <div id="success" class="alert alert-success {$SUCCESS_ACTIVE$}">
             {$SUCCESS$}
+          </div>
+          
+          <div class="form-group">
+           <input id="csrf" name="csrf" type="hidden" value="{$CSRF$}" />
           </div>
           
           <div class="form-group">
@@ -378,6 +382,7 @@
                 </div>
               </div>
             </div>
+            
             <div class="col-md-6">
               <div class="form-group">
                 <label for="services">
@@ -393,6 +398,10 @@
                   This is a required field
                 </div>
               </div>
+              
+              <div class="form-group">
+                <input id="service-value" type="hidden" value="1" />
+              </div>
             </div>
           </div>
           
@@ -402,7 +411,7 @@
                 <label for="area">
                 Area: <span class="required">*</span>
                 </label>
-                <input id="area" name="area" type="number" class="form-control" />
+                <input id="area" name="area" type="number" step="0.01" min="0" class="form-control" />
                 <div class="error required">
                   This is a required field
                 </div>
@@ -412,9 +421,12 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="cost">
-                Cost:
+                Cost: <span class="ajax-loader"><i class="fas fa-sync-alt"></i></span>
                 </label>
-                <input id="cost" name="cost" type="number" class="form-control" />
+                <input id="cost" name="cost" type="number" step="0.01" min="0" class="form-control" />
+                <div class="error required">
+                  Incorrect value selection
+                </div>
               </div>
             </div>
           </div>

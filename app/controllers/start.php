@@ -32,6 +32,55 @@ class Start extends Controller {
   
   # Landing page method
   public function index() {
+    
+    # CSRF hash
+    if (empty($_SESSION["token"]) || !isset($_SESSION["token"])) {
+        $_SESSION["token"] = bin2hex(random_bytes(32));
+    }
+    
+    # Initial state
+    $locales = array(
+    "ERROR_ACTIVE" => "",
+    "SUCCESS_ACTIVE" => "",
+    "ERROR" => "",
+    "SUCCESS" => "",
+    "CSRF" => $_SESSION["token"],
+    "ACTIVE" => "",
+    );
+    
+    $this->output->add_localearray($locales);
+    
+    # Throw error if any is found
+    if (isset($_SESSION["error"]) && count($_SESSION["error"]) > 0){
+                             
+      $err_mess = "\n";
+      $err_mess .= "Errors found!";
+      $err_mess .= "<br />\n";
+      
+      foreach ($_SESSION["error"] as $error) {
+        $err_mess .= $error . "<br />\n";
+      }
+      
+      $locales = array(
+      "ERROR_ACTIVE" => "active",
+      "ERROR" => $err_mess
+      );
+      
+      $this->output->add_localearray($locales);
+      unset($_SESSION["error"]);
+    }
+    
+    # If success message is received
+    if (isset($_SESSION["success"]) && count($_SESSION["success"]) > 0) {
+      $arr = array(
+      "SUCCESS_ACTIVE" => "active",
+      "SUCCESS" => $_SESSION["success"][0],
+      );
+      
+      $this->output->add_localearray($arr);
+      unset($_SESSION["success"]);
+    }
+    
     $this->get_model("PageModel")->page_title="Index";
     $this->build_page("start");
   }
