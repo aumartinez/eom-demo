@@ -5,11 +5,11 @@
 img.img-responsive,
 .img-responsive {
   max-width: 100%;
-  display: inline-block;
 }
 
-.img-center {
+.img-responsive.img-center {
   margin: 0 auto;
+  display: block;
   text-align: center;
 }
 
@@ -39,21 +39,77 @@ img.img-responsive,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.res-pd-top-bottom {
-  padding-top: 0;
-  padding-bottom: 0;
+.flex-vt-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.sec-padding {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* Typography */
+
+p {
+  color: #999;
+  font-size: 14px;
+}
+
+h2 {
+  font-weight: bold;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+h2::after {
+  content: "";
+  width: 65px;
+  height: 5px;
+  background-color: #f7c51e;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+}
+
+h3 {
+  font-size: 16px;
 }
 
 /* Branding */
 
-.color-secondary {
-  
+.text-primary {
+  color: #f7c51e !important;
 }
 
 .bg-secondary {
   background-color: #454545 !important;
+}
+
+.btn-primary {
+  background-color: #f7c51e;
+  border: none;
+  color: #454545;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #f7c51e;
+  border: none;
+  opacity: 0.7;
+  color: #454545;
+}
+
+.required {
+  color: red;
 }
 
 /* Header */
@@ -100,6 +156,11 @@ img.img-responsive,
 
 /* Navbar */
 
+.navbar-toggler {
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
 .top-nav .row, 
 #navbar .navbar-nav {  
   -webkit-box-pack: space-betweeen;
@@ -119,6 +180,113 @@ img.img-responsive,
   color: #000;
 }
 
+#navbar .nav-item {
+  text-align: center;
+}
+
+/* Carousel */
+
+.carousel-caption {
+  background-color: rgba(69, 69, 69, 0.8);
+}
+
+.carousel-control {
+  font-size: 50px;
+  color: #000;
+}
+
+/* Midd section */
+
+.article img {
+  margin-bottom: 15px;
+}
+
+.article a {
+  color: #1b92bf;
+  font-weight: bold;
+}
+
+.news img {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.news {
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.news a {
+  color: #000;
+}
+
+/* Gallery */
+
+.hover-card {
+  padding: 15px 0;
+  position: relative;
+}
+
+.hover-card img {  
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.hover-card:hover img {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.hover-card:hover .text {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.overlay .text {
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.overlay h4 {
+  font-size: 16px;
+}
+
+/* Quote */
+
+.info h3.first {
+  margin-top: 65px;
+}
+
+/* Footer */
+
+footer h4 {
+  color: #999;
+}
 
 /* Mobile only */
 
@@ -126,12 +294,52 @@ img.img-responsive,
   .hidden-xs {
     display: none;
   }
+  
+  /* Mobile */
+  
+  header + nav.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 
 @media (min-width: 767px) {
   .visible-xs {
     display: none !important;
+  } 
+  
+  .header-item .icon {
+    font-size: 16px;
   }
   
+  .col-flex-vt-center nav.navbar {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
   
+  .col-flex-vt-center nav.navbar ul {
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+  }
+  
+  /* Carousel */
+  
+  .carousel-caption {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .carousel-caption h3 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header-item .icon {
+    font-size: 40px;
+  }
 }
