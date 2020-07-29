@@ -36,7 +36,7 @@ INSERT INTO eom_services (id, services, service_value, created_at, updated_at) V
 
 4. Add form
 
-5. Create PHP webservice script, using an MVC basic framework for PHP, a controller called WS is added
+5. Create PHP webservice script, using a basic MVC framework for PHP, a controller called WS is added
 
 ```php
 <?php
