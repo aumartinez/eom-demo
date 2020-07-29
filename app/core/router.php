@@ -49,8 +49,7 @@ class Router {
     }    
     
     # Pull URL query parameters if any
-    $this->params = $url_array;
-    
+    $this->params = $url_array;    
                             
     # If controller is not found or not exists as a class handler
     # set default controller and not found method
