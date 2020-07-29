@@ -10,7 +10,7 @@ https://accedo-gps.000webhostapp.com/demo/eom-demo/
 
 How to create a webservice using PHP and connecting the service using AJAX and JQuery
 
-1. - First create the DB table structure (MySQL or anything similar)
+1. First create the DB table structure (MySQL or anything similar)
 
 ```SQL
 CREATE TABLE IF NOT EXISTS eom_services (
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS eom_services (
 ) ENGINE = MyISAM DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci AUTO_INCREMENT = 1;
 ```
 
-2. - Fill in some sample data
+2. Fill in some sample data
 
 ```SQL
 INSERT INTO eom_services (id, services, service_value, created_at, updated_at) VALUES
@@ -32,11 +32,11 @@ INSERT INTO eom_services (id, services, service_value, created_at, updated_at) V
 (3, 'Sheetrock', '33.05', '2020-07-21 00:30:07', '2020-07-21 00:30:07');
 ```
 
-3. - Create HTML, CSS, site template, this one uses Bootstrap 4 as the frontend framework
+3. Create HTML, CSS, site template, this one uses Bootstrap 4 as the frontend framework
 
-4. - Add form
+4. Add form
 
-5. - Create PHP webservice script, using an MVC basic framework for PHP, a controller called WS is added
+5. Create PHP webservice script, using an MVC basic framework for PHP, a controller called WS is added
 
 ```php
 <?php
@@ -103,7 +103,7 @@ class WS extends Controller {
 ?>
 ```
 
-This controller start/instantiats a PageModel class that presents/returns a "not found" page if incorrect URL or request is submitted.
+This controller start/instantiates a PageModel class that presents/returns a "not found" page if incorrect URL or request is submitted.
 
 Webservice class connects to the DB using a WSModel class
 
@@ -151,7 +151,7 @@ This model inherits base methods from the DBModel class, which are the ones used
 
 When the method "get-value" is called submitting the query with the proper POST package, a query is submitted to the DB and returned as a JSON string. Submitting an incorrect or empty POST package, results in the return of an empty JSON.
 
-6. - Connect form to the WS using JS (JQuery)
+6. Connect form to the WS using JS (JQuery)
 
 JQuery comes handy when an AJAX call is needed and since it is required to use Bootstrap, then it is used as the preferred library for this purpose.
 
