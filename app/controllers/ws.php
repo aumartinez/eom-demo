@@ -35,12 +35,6 @@ class WS extends Controller {
     echo json_encode($result);
   }
   
-  public function get_values() {
-    header("Content-Type: application/json");
-    $values = $this->get_model("WSModel")->get_values();
-    echo json_encode($values);
-  }
-      
   # Not found handler
   public function not_found() {    
     # 404 page
