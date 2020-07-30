@@ -47,10 +47,6 @@ class WS extends Controller {
     
   public function __construct($controller, $method) {
     parent::__construct($controller, $method);
-        
-    session_start();
-    
-    header('Content-Type: application/json');
     
     # Any models required to interact with this controller should be loaded here    
     $this->load_model("PageModel");
@@ -70,6 +66,8 @@ class WS extends Controller {
   }
   
   public function get_value() {
+    header("Content-Type: application/json");
+    
     $val = $_POST["services"];
     $val = $this->get_model("WSModel")->sanitize_str($val);
     
@@ -79,6 +77,7 @@ class WS extends Controller {
   }
   
   public function get_values() {
+    header("Content-Type: application/json");
     $values = $this->get_model("WSModel")->get_values();
     echo json_encode($values);
   }
