@@ -56,7 +56,7 @@ class Router {
     if (empty($controller)) {
       $controller = $this->default_controller;      
     }
-    else if (!(class_exists($controller))) {
+    else if (endsWith($controller, "model") == 1 || !(class_exists($controller))) {
       $controller = $this->default_controller;      
       $method = NOT_FOUND;
     }
