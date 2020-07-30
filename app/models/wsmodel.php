@@ -1,16 +1,7 @@
 <?php
 
 class WSModel extends DbModel {
-  
-  public function get_values() {
-    $sql = "SELECT service_value
-          FROM eom_services";
     
-    $res = $this->get_query($sql);
-      
-    return $res;
-  }
-  
   public function get_value($str) {
     $sql = "SELECT service_value
             FROM eom_services
