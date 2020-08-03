@@ -10,6 +10,15 @@ function redirect($page) {
   exit();
 }
 
+function is_controller($str) {
+  if (file_exists(ROOT . DS . "controllers" . DS . strtolower($str) . ".php")){
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 function endsWith($string, $endString) { 
     $len = strlen($endString); 
     if ($len == 0) { 
