@@ -27,9 +27,9 @@ CREATE TABLE IF NOT EXISTS eom_services (
 
 ```SQL
 INSERT INTO eom_services (id, services, service_value, created_at, updated_at) VALUES
-(1, 'Painting', '20', '2020-07-21 00:30:07', '2020-07-21 00:30:07'),
-(2, 'Drywall', '45', '2020-07-21 00:30:07', '2020-07-21 00:30:07'),
-(3, 'Sheetrock', '33.05', '2020-07-21 00:30:07', '2020-07-21 00:30:07');
+(1, 'Painting', '20', NOW(), NOW()),
+(2, 'Drywall', '45', NOW(), NOW()),
+(3, 'Sheetrock', '33.05', NOW(), NOW());
 ```
 
 3. Create HTML, CSS, site template, this one uses Bootstrap 4 as the frontend framework
