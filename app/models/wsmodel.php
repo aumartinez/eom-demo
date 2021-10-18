@@ -14,6 +14,7 @@ class WSModel extends DbModel {
   
   public function sanitize_str($str) {
     $str = trim($str);
+    $str = strip_tags($str);
     $str = stripslashes($str);
     $str = htmlspecialchars($str);
       
